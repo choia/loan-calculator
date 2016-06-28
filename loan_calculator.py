@@ -1,29 +1,46 @@
 import sys
-from PyQt5.QtWidgets import QWidget, QGridLayout, QPushButton, QApplication
+from PyQt5.QtCore import Qt, pyqtSignal, pyqtSlot
+from PyQt5.QtGui import QIntValidator
+from PyQt5.QtWidgets import (QWidget, QLabel, QLineEdit, QPushButton,
+                             QVBoxLayout, QApplication)
 
-class Example(QWidget):
+class Window(QWidget):
+
     def __init__(self):
         super().__init__()
-        self.initUI()
+        self.init_ui()
 
-    def initUI(self):
-        grid = QGridLayout()
-        grid.setSpacing(10)
-        self.setLayout(grid)
+    def init_ui(self):
 
-        names = ['User Input Field', 'Static Information', 'Placeholder1', 'Placeholder2']
-        positions = [(i,j) for i in range(2) for j in range(2)]
+        self.line1 = QLineEdit()
+        self.line1.setValidator(QIntValidator())
+        self.line2 = QLineEdit()
+        self.line2.setValidator(QIntValidator())
+        self.btn1 = QPushButton('Test', self)
 
-        for position, name in zip(positions, names):
-            button = QPushButton(name)
-            grid.addWidget(button, *position)
+        self.line1.textChanged.connect(self.calculated)
 
-            self.move(300, 300)
-            self.setWindowTitle('Calculator')
-            self.show()
 
+        vbox = QVBoxLayout()
+        vbox.addWidget(self.line1)
+        #vbox.addWidget(self.line3)
+        vbox.addWidget(self.btn1)
+        vbox.addWidget(self.line2)
+
+        self.setLayout(vbox)
+
+        self.setGeometry(600, 400, 400, 400)
+        self.setWindowTitle('Test')
+
+    def calculated(self, text):
+        if text:
+            text = (int(text) * 2)
+            self.line2.setText(str(text))
+        else: self.line2.setText('')
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = Example()
+    window = Window()
+    window.show()
     sys.exit(app.exec_())
+
