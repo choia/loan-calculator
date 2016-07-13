@@ -44,8 +44,6 @@ class Window(QWidget):
         self.qline4.setValidator(QIntValidator())
 
         self.qline1.setPlaceholderText("Enter the Loan Amount")
-        #self.qlabel1 = QLabel()
-
         input_gridbox = QGridLayout()
 
         input_gridbox.addWidget(self.loan_amount_label, 0, 0)
@@ -56,7 +54,6 @@ class Window(QWidget):
         input_gridbox.addWidget(self.qline2, 1, 1)
         input_gridbox.addWidget(self.qline3, 2, 1)
         input_gridbox.addWidget(self.qline4, 3, 1)
-        #input_gridbox.addWidget(self.qlabel1, 4, 1)
 
         self.input_fields_group_box.setLayout(input_gridbox)
         return self.input_fields_group_box
