@@ -20,6 +20,7 @@ class Example(QWidget):
         self.center()
         self.show()
 
+
     def center(self):
         screen = self.frameGeometry()
         center_point = QDesktopWidget().availableGeometry().center()
