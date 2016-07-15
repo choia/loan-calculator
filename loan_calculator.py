@@ -30,6 +30,7 @@ class Window(QWidget):
         self.qline3.textEdited.connect(self.text_updated)
         self.qline4.textEdited.connect(self.text_updated)
 
+
     def input_fields_group(self):
         self.input_fields_group_box = QGroupBox("User Input Fields")
         self.loan_amount_label = QLabel("Loan Amount: ")
@@ -103,21 +104,23 @@ class Window(QWidget):
             q2 = float(self.qline2.text())
             q3 = int(self.qline3.text())
             q4 = int(self.qline4.text())
+
             result = self.calculate(q1, q2, q3, q4)
             result_format = format(result, '.2f')
 
             result_total_number_of_payment = self.calculate_total_number_of_payment(q3, q4)
-            
+
             result_total_payment_amount = self.calculate_total_payment_amount(result, result_total_number_of_payment)
             total_payment_format = format(result_total_payment_amount, '.2f')
 
             result_interest_paid = self.calculate_interest_paid(result_total_payment_amount, q1)
             interest_paid_format = format(result_interest_paid, '.2f')
 
-            self.scheduled_payment_amount.setText(str(result_format))
+            self.scheduled_payment_amount.setText(str('$' + result_format))
             self.total_number_of_payments.setText(str(result_total_number_of_payment))
-            self.total_payment_amount.setText(str(total_payment_format))
-            self.total_interest_paid.setText(str(interest_paid_format))
+            self.total_payment_amount.setText(str('$' + total_payment_format))
+            self.total_interest_paid.setText(str('$' + interest_paid_format))
+
 
     def calculate(self, p, r, y, n):
         total_number_payment = y * n
