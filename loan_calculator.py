@@ -10,6 +10,7 @@ class Window(QWidget):
         super().__init__()
         self.init_ui()
 
+
     def init_ui(self):
         # Resize widget's window screen
         self.resize(600, 200)
@@ -25,51 +26,54 @@ class Window(QWidget):
         self.setLayout(grid)
 
         # Send signal to the slot when line text is edited
-        self.qline1.textEdited.connect(self.text_updated)
-        self.qline2.textEdited.connect(self.text_updated)
-        self.qline3.textEdited.connect(self.text_updated)
-        self.qline4.textEdited.connect(self.text_updated)
+        self.loan_amount_edit.textEdited.connect(self.text_updated)
+        self.interest_rate_edit.textEdited.connect(self.text_updated)
+        self.num_of_years_edit.textEdited.connect(self.text_updated)
+        self.num_payment_per_yr_edit.textEdited.connect(self.text_updated)
 
 
     def input_fields_group(self):
+        # Function for the input fields group
         self.input_fields_group_box = QGroupBox("User Input Fields")
         self.loan_amount_label = QLabel("Loan Amount: ")
         self.interest_rate_label = QLabel("Interest Rate (%): ")
         self.number_of_years_label = QLabel("Number of Years: ")
         self.number_of_payment_per_year_label = QLabel("No. of Payments Per Year: ")
 
-        self.qline1 = QLineEdit()
-        self.qline1.setMaxLength(9)
-        self.qline1.setValidator(QDoubleValidator(0.0, 999999.99, 2))
-        self.qline1.setPlaceholderText("Enter the Loan Amount")
-        self.qline2 = QLineEdit()
-        self.qline2.setMaxLength(4)
-        self.qline2.setValidator(QDoubleValidator(0.0, 999999.99, 2))
+        self.loan_amount_edit = QLineEdit()
+        self.loan_amount_edit.setMaxLength(9)
+        self.loan_amount_edit.setValidator(QDoubleValidator(0.0, 999999.99, 2))
+        self.loan_amount_edit.setPlaceholderText("Enter the Loan Amount")
+        self.interest_rate_edit = QLineEdit()
+        self.interest_rate_edit.setMaxLength(4)
+        self.interest_rate_edit.setValidator(QDoubleValidator(0.0, 999999.99, 2))
 
-        regex_qline = QRegExp("^[1-9][0-9]*")
-        validator = QRegExpValidator(regex_qline)
+        regex_line_edit = QRegExp("^[1-9][0-9]*")
+        validator = QRegExpValidator(regex_line_edit)
 
-        self.qline3 = QLineEdit()
-        self.qline3.setMaxLength(2)
-        self.qline3.setValidator(validator)
-        self.qline4 = QLineEdit()
-        self.qline4.setMaxLength(2)
-        self.qline4.setValidator(validator)
+        self.num_of_years_edit = QLineEdit()
+        self.num_of_years_edit.setMaxLength(2)
+        self.num_of_years_edit.setValidator(validator)
+        self.num_payment_per_yr_edit = QLineEdit()
+        self.num_payment_per_yr_edit.setMaxLength(2)
+        self.num_payment_per_yr_edit.setValidator(validator)
 
-        input_gridbox = QGridLayout()
-        input_gridbox.addWidget(self.loan_amount_label, 0, 0)
-        input_gridbox.addWidget(self.interest_rate_label, 1, 0)
-        input_gridbox.addWidget(self.number_of_years_label, 2, 0)
-        input_gridbox.addWidget(self.number_of_payment_per_year_label, 3, 0)
-        input_gridbox.addWidget(self.qline1, 0, 1)
-        input_gridbox.addWidget(self.qline2, 1, 1)
-        input_gridbox.addWidget(self.qline3, 2, 1)
-        input_gridbox.addWidget(self.qline4, 3, 1)
+        input_gbox = QGridLayout()
+        input_gbox.addWidget(self.loan_amount_label, 0, 0)
+        input_gbox.addWidget(self.interest_rate_label, 1, 0)
+        input_gbox.addWidget(self.number_of_years_label, 2, 0)
+        input_gbox.addWidget(self.number_of_payment_per_year_label, 3, 0)
+        input_gbox.addWidget(self.loan_amount_edit, 0, 1)
+        input_gbox.addWidget(self.interest_rate_edit, 1, 1)
+        input_gbox.addWidget(self.num_of_years_edit, 2, 1)
+        input_gbox.addWidget(self.num_payment_per_yr_edit, 3, 1)
 
-        self.input_fields_group_box.setLayout(input_gridbox)
+        self.input_fields_group_box.setLayout(input_gbox)
         return self.input_fields_group_box
 
+
     def output_calculated_group(self):
+        # Function for the loan calculation group
         self.output_calculated_group_box = QGroupBox("Loan Calculation")
         self.scheduled_payment_amount_label = QLabel("Payment Amount: ")
         self.total_number_of_payments_label = QLabel("Total No. of Payments: ")
@@ -85,44 +89,49 @@ class Window(QWidget):
         self.total_payment_amount.setReadOnly(True)
         self.total_interest_paid.setReadOnly(True)
 
-        output_gridbox = QGridLayout()
-        output_gridbox.addWidget(self.scheduled_payment_amount_label, 0, 0)
-        output_gridbox.addWidget(self.total_number_of_payments_label, 1, 0)
-        output_gridbox.addWidget(self.total_payment_amount_label, 2, 0)
-        output_gridbox.addWidget(self.total_interest_paid_label, 3, 0)
-        output_gridbox.addWidget(self.scheduled_payment_amount, 0, 1)
-        output_gridbox.addWidget(self.total_number_of_payments, 1, 1)
-        output_gridbox.addWidget(self.total_payment_amount, 2, 1)
-        output_gridbox.addWidget(self.total_interest_paid, 3, 1)
+        output_gbox = QGridLayout()
+        output_gbox.addWidget(self.scheduled_payment_amount_label, 0, 0)
+        output_gbox.addWidget(self.total_number_of_payments_label, 1, 0)
+        output_gbox.addWidget(self.total_payment_amount_label, 2, 0)
+        output_gbox.addWidget(self.total_interest_paid_label, 3, 0)
+        output_gbox.addWidget(self.scheduled_payment_amount, 0, 1)
+        output_gbox.addWidget(self.total_number_of_payments, 1, 1)
+        output_gbox.addWidget(self.total_payment_amount, 2, 1)
+        output_gbox.addWidget(self.total_interest_paid, 3, 1)
 
-        self.output_calculated_group_box.setLayout(output_gridbox)
+        self.output_calculated_group_box.setLayout(output_gbox)
         return self.output_calculated_group_box
 
+
     def text_updated(self):
-        if self.qline1.text() and self.qline2.text() and self.qline3.text() and self.qline4.text():
-            q1 = float(self.qline1.text())
-            q2 = float(self.qline2.text())
-            q3 = int(self.qline3.text())
-            q4 = int(self.qline4.text())
+        # Triggers this function upon signal text fields in input fields are edited
+        if self.loan_amount_edit.text() and self.interest_rate_edit.text() \
+                and self.num_of_years_edit.text() and self.num_payment_per_yr_edit.text():
 
-            result = self.calculate(q1, q2, q3, q4)
-            result_format = format(result, '.2f')
+            loan_amount = float(self.loan_amount_edit.text())
+            interest_rate = float(self.interest_rate_edit.text())
+            num_of_years = int(self.num_of_years_edit.text())
+            num_payment_per_yr = int(self.num_payment_per_yr_edit.text())
 
-            result_total_number_of_payment = self.calculate_total_number_of_payment(q3, q4)
+            monthly_payment = self.calculate_monthly_payment(loan_amount, interest_rate, num_of_years, num_payment_per_yr)
+            result_monthly_payment = format(monthly_payment, '.2f')
 
-            result_total_payment_amount = self.calculate_total_payment_amount(result, result_total_number_of_payment)
-            total_payment_format = format(result_total_payment_amount, '.2f')
+            result_total_number_of_payment = self.calculate_total_number_of_payment(num_of_years, num_payment_per_yr)
 
-            result_interest_paid = self.calculate_interest_paid(result_total_payment_amount, q1)
-            interest_paid_format = format(result_interest_paid, '.2f')
+            total_payment_amount = self.calculate_total_payment_amount(monthly_payment, result_total_number_of_payment)
+            result_total_payment = format(total_payment_amount, '.2f')
 
-            self.scheduled_payment_amount.setText(str('$' + result_format))
+            interest_paid = self.calculate_interest_paid(total_payment_amount, loan_amount)
+            result_interest_paid = format(interest_paid, '.2f')
+
+            self.scheduled_payment_amount.setText(str('$ ' + result_monthly_payment))
             self.total_number_of_payments.setText(str(result_total_number_of_payment))
-            self.total_payment_amount.setText(str('$' + total_payment_format))
-            self.total_interest_paid.setText(str('$' + interest_paid_format))
+            self.total_payment_amount.setText(str('$ ' + result_total_payment))
+            self.total_interest_paid.setText(str('$ ' + result_interest_paid))
 
 
-    def calculate(self, p, r, y, n):
+    def calculate_monthly_payment(self, p, r, y, n):
+        # calculates the scheduled monthly payment
         total_number_payment = y * n
         calculated_rate = r / 100 / n
         formula_one = calculated_rate * ((calculated_rate + 1) ** total_number_payment)
@@ -130,17 +139,25 @@ class Window(QWidget):
         result = p * (formula_one / formula_two)
         return result
 
+
     def calculate_total_number_of_payment(self, number_of_years, number_of_payment_per_year):
+        # Calculates the total number of payment
         return number_of_years * number_of_payment_per_year
 
+
     def calculate_total_payment_amount(self, monthly_payment, total_number_of_payment):
+        # Calculates the total payment amount
         return monthly_payment * total_number_of_payment
 
+
     def calculate_interest_paid(self, total_payment_amount, loan_amount):
+        # Calculates the interest paid
         return total_payment_amount - loan_amount
 
-    # Function that centers widget's window on display screen
+
+
     def center_window_widget(self):
+        # Function that centers widget's window on display screen
         window_screen = self.frameGeometry()
         center_point = QDesktopWidget().availableGeometry().center()
         window_screen.moveCenter(center_point)
