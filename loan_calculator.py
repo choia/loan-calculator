@@ -155,7 +155,6 @@ class Window(QWidget):
         return total_payment_amount - loan_amount
 
 
-
     def center_window_widget(self):
         # Function that centers widget's window on display screen
         window_screen = self.frameGeometry()
