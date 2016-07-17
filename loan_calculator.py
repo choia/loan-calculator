@@ -130,13 +130,13 @@ class Window(QWidget):
             self.total_interest_paid.setText(str('$ ' + result_interest_paid))
 
 
-    def calculate_monthly_payment(self, p, r, y, n):
+    def calculate_monthly_payment(self, principal, rate, years, num_payments_per_year):
         # calculates the scheduled monthly payment
-        total_number_payment = y * n
-        calculated_rate = r / 100 / n
+        total_number_payment = years * num_payments_per_year
+        calculated_rate = rate / 100 / num_payments_per_year
         formula_one = calculated_rate * ((calculated_rate + 1) ** total_number_payment)
         formula_two = ((1 + calculated_rate) ** total_number_payment) - 1
-        result = p * (formula_one / formula_two)
+        result = principal * (formula_one / formula_two)
         return result
 
 
