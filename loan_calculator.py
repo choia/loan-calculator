@@ -45,8 +45,8 @@ class Window(QWidget):
         self.loan_amount_edit.setValidator(QDoubleValidator(0.0, 999999.99, 2))
         self.loan_amount_edit.setPlaceholderText("Enter the Loan Amount")
         self.interest_rate_edit = QLineEdit()
-        self.interest_rate_edit.setMaxLength(4)
-        self.interest_rate_edit.setValidator(QDoubleValidator(0.0, 999999.99, 2))
+        self.interest_rate_edit.setMaxLength(5)
+        self.interest_rate_edit.setValidator(QDoubleValidator(0.0, 999999.99, 3))
 
         regex_line_edit = QRegExp("^[1-9][0-9]*")
         validator = QRegExpValidator(regex_line_edit)
