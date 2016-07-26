@@ -1,8 +1,13 @@
 # Loan Calculator
 Simple loan calculator that can be used to calculate the monthly payments on mortgage, auto, and etc.
 
-Import PyQt5 module for GUI
-Converted to executable file using PyInstaller
+## Requirement
+- Import PyQt5 module for GUI
+
+
+## Download
+- I've also converted my codes to executable file using [PyInstaller](http://www.pyinstaller.org/). You're more than welcome to download executable file to test it out.
+
 
 
 ![Alt Text](https://github.com/choia/loan-calculator/blob/master/Loan_calculator_sc.png?raw=true)
