@@ -6,8 +6,8 @@ Simple loan calculator that can be used to calculate the monthly payments on mor
 
 
 ## Download
-- I've also converted my codes to executable file using [PyInstaller](http://www.pyinstaller.org/). You're more than welcome to download executable file to test it out.
+- I've also converted my codes to executable file using [PyInstaller](http://www.pyinstaller.org/). You're more than welcome to download executable file to test it out!
 
 
-
+## Screenshot
 ![Alt Text](https://github.com/choia/loan-calculator/blob/master/Loan_calculator_sc.png?raw=true)
