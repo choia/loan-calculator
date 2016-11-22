@@ -1,5 +1,6 @@
-# Loan Calculator
-Simple loan calculator that can be used to calculate the monthly payments on mortgage, auto, and etc.
+## Loan Calculator
+Loan calculator that can be used to calculate the monthly payments on mortgage, auto, and etc.
+
 
 ## Requirement
 - Import PyQt5 module for GUI
