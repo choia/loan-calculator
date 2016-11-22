@@ -10,4 +10,4 @@ Simple loan calculator that can be used to calculate the monthly payments on mor
 
 
 ## Screenshot
-![Alt Text](https://github.com/choia/loan-calculator/blob/master/Loan_calculator_sc.png)
+![Alt Text](https://github.com/choia/loan-calculator/blob/master/Loan_calculator_sc.png?raw=true)
